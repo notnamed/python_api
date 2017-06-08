@@ -27,7 +27,7 @@ node {
          // Roll out to canary environment
          // Change deployed image in canary to the one we just built
          sh("sed -i.bak 's#quay.io/${project}/${appName}:.*\$#${imageTag}#' ./k8s/canary/*.yaml")
-	 sh("sed -i.bak 's#python-api-canary#python-api-${env.BUILD_NUMBER}#' ./k8s/canary/*.yaml")
+//	 sh("sed -i.bak 's#python-api-canary#python-api-v${env.BUILD_NUMBER}#' ./k8s/canary/*.yaml")
          sh("kubectl --namespace=${namespace} apply -f k8s/services/")
          sh("kubectl --namespace=${namespace} apply -f k8s/canary/")
     break
@@ -36,7 +36,7 @@ node {
          // Roll out to production environment
          // Change deployed image in canary to the one we just built
          sh("sed -i.bak 's#quay.io/${project}/${appName}:.*\$#${imageTag}#' ./k8s/production/*.yaml")
-	 sh("sed -i.bak 's#python-api-production#python-api-${env.BUILD_NUMBER}#' ./k8s/production/*.yaml")
+//	 sh("sed -i.bak 's#python-api-production#python-api-v${env.BUILD_NUMBER}#' ./k8s/production/*.yaml")
          sh("kubectl --namespace=${namespace} apply -f k8s/services/")
          sh("kubectl --namespace=${namespace} apply -f k8s/production/")
     break
