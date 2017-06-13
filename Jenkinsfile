@@ -1,5 +1,5 @@
 node {
-  def project = 'chris_ricci'
+  def project = 'jordan_cooks'
   def appName = 'python_api'
   def feSvcName = "${appName}"
   def namespace = 'production'
